@@ -1,0 +1,11 @@
+{
+  "vs-code-prettier-eslint.prettierLast": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "markdown.preview.breaks": true,
+  "markdown.extension.completion.enabled": true,
+  "markdown.extension.preview.autoShowPreviewToSide": true
+}
