@@ -606,5 +606,4 @@ postcss.config.js
 
 [NextUI component library](https://nextui.org/docs/guide/introduction)
 
-[AceternityUI component library](https://ui.aceternity.com/components
-)
+[AceternityUI component library](https://ui.aceternity.com/components)
