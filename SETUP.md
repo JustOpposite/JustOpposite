@@ -601,3 +601,10 @@ export default function Home() {
 tailwind.config.js
 postcss.config.js
 ```
+
+## Other note worthy UI library
+
+[NextUI component library](https://nextui.org/docs/guide/introduction)
+
+[AceternityUI component library](https://ui.aceternity.com/components
+)
