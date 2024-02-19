@@ -21,16 +21,12 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.331.0",
-    "preact": "^10.19.5",
-    "react": "npm:@preact/compat",
-    "react-dom": "npm:@preact/compat",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@preact/preset-vite": "^2.8.1",
-    "@stylistic/eslint-plugin-ts": "^1.6.2",
     "@tanstack/router-vite-plugin": "^1.16.5",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",

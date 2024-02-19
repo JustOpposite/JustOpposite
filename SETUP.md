@@ -328,7 +328,7 @@ pnpm add @tanstack/router-devtools
 
 [Migrate from React Router](https://tanstack.com/router/latest/docs/framework/react/migrate-from-react-router)
 
-## Preact transplant while keeping React around
+## OPTIONAL: Preact transplant while keeping React around
 
 [Preact Compat Doc](https://preactjs.com/guide/v10/getting-started/#aliasing-react-to-preact)
 
@@ -417,6 +417,8 @@ pnpm install --force
 
 ## OPTIONAL: Swap out Preact with React for debugging or compatibility issues
 
+\$ pnpm remove preact @babel/core @preact/preset-vite @stylistic/eslint-plugin-ts
+
 \$ pnpm add react react-dom
 
 \$ vi tsconfig.json ___delete following:___
@@ -445,6 +447,10 @@ pnpm install --force
 import react from '@vitejs/plugin-react-swc'
 ...
 export default defineConfig({
+   resolve: {
+      //mainFields: ['module'],
+      ...
+   },
    plugins: [
       ...
       //preact()
@@ -453,8 +459,6 @@ export default defineConfig({
    ...
 })
 ```
-
-\$ pnpm remove preact @babel/core @preact/preset-vite @stylistic/eslint-plugin-ts
 
 Bring pnpm lock up in sync ___execute following:___
 
