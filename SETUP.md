@@ -71,9 +71,9 @@ $ pnpm run dev
    "@typescript-eslint/semi": "off",
    "react/function-component-definition": "off",
    "react/react-in-jsx-scope": "off",
+   "react/jsx-props-no-spreading": "off",
    "import/extensions": [
       "error",
-      "ignorePackages",
       {
             "js": "never",
             "jsx": "never",
