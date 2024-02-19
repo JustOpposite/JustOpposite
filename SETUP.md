@@ -12,7 +12,9 @@
 
 ```text
 1. enter: <app name>
+
 2. select framework: React
+
 3. select compiler: Typescript-swc
 ```
 
@@ -40,14 +42,23 @@ pnpm run dev
 
 ```text
 1. To check syntax, find problems, and force code style
+
 2. JavaScript modules (import/export)
+
 3. React
+
 4. Typescript Yes
+
 5. Browser
+
 6. Use a popular style guide
+
 7. Standard
+
 8. JSON
+
 9. Install dependencies Yes
+
 10. pnpm
 ```
 
@@ -328,7 +339,7 @@ pnpm add @tanstack/router-devtools
 
 [Migrate from React Router](https://tanstack.com/router/latest/docs/framework/react/migrate-from-react-router)
 
-## OPTIONAL: Preact transplant while keeping React around
+## OPTIONAL: Preact transplant while keeping React around (Not recommended due to possible future compatibility issues)
 
 [Preact Compat Doc](https://preactjs.com/guide/v10/getting-started/#aliasing-react-to-preact)
 
@@ -486,6 +497,8 @@ pnpm install --force
 ## Shadcn UI installation, configuration
 
 [Shadcn/ui Installation](https://ui.shadcn.com/docs/installation)
+
+<mark>NOTE: Shadcn/ui uses Radix ui under the hood, Radix is not compatible with Preact.<mark>
 
 [Shadcn/ui Vite specific installation instructions](https://ui.shadcn.com/docs/installation/vite)
 
