@@ -1,27 +1,29 @@
-# Setup React Typescript app with pnpm, vite, vitest, eslint, prettier, husky, markdown docs 
+# Setup React Typescript app with pnpm, vite, vitest, eslint, prettier, husky, markdown docs
 
 ---
 
-## Pnpm install globally 
+## Pnpm install globally
 
 \$ sudo npm install -g pnpm
 
 ## Vite create starter app
 
 \$ pnpm create vite
-```
+
+```text
 1. enter: <app name>
 2. select framework: React
 3. select compiler: Typescript-swc
 ```
 
-\$ cd <app name>
+\$ cd \<app name>
 
 \$ pnpm install
 
 test generated app
-```
-$ pnpm run dev
+
+```bash
+pnpm run dev
 ```
 
 ## Git initialization starter app
@@ -35,7 +37,8 @@ $ pnpm run dev
 ## Eslint initialization
 
 \$ pnpm create @eslint/config
-```
+
+```text
 1. To check syntax, find problems, and force code style
 2. JavaScript modules (import/export)
 3. React
@@ -57,6 +60,7 @@ $ pnpm run dev
 \$ pnpm add -D eslint eslint-plugin-import eslint-plugin-react-hooks @typescript-eslint/parser eslint-config-airbnb eslint-config-airbnb-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-jsx-a11y @stylistic/eslint-plugin-ts
 
 \$ vi .eslintrc ___with following:___
+
 ```json
 "extends": [
    "airbnb",
@@ -86,6 +90,7 @@ $ pnpm run dev
 ```
 
 \$ vi package.json ___with following:___
+
 ```json
 "scripts": {
    ...
@@ -96,7 +101,8 @@ $ pnpm run dev
 ```
 
 \$ vi .eslintignore ___with following:___
-```
+
+```text
 build 
 coverage
 node_modules
@@ -110,6 +116,7 @@ public
 \$ pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 
 \$ vi .eslintrc ___with following:___ (_make sure prettier plugin is in the last line_)
+
 ```json
 "extends": [
    ...
@@ -127,6 +134,7 @@ public
 ```
 
 \$ vi .prettierrc ___with following:___
+
 ```json
 {
    "tabWidth": 2,
@@ -140,6 +148,7 @@ public
 ```
 
 \$ vi tsconfig.json ___with following:___
+
 ```json
 "include": [
    "vite.config.ts",
@@ -154,7 +163,8 @@ public
 install vscode extension lintel (optional)
 
 \$ vi .prettierignore ___with following:___
-```
+
+```text
 build 
 coverage
 node_modules
@@ -168,8 +178,9 @@ public
 \$ pnpx husky-init && pnpm install
 
 \$ vi .husky/pre-commit ___with following:___
-```
-$ pnpm run lint
+
+```bash
+pnpm run lint
 ```
 
 ## Vitest installation and configuration
@@ -181,6 +192,7 @@ $ pnpm run lint
 \$ pnpm add -D vitest jsdom @testing-library/react @testing-library/jest-dom @vitest/ui
 
 \$ vi vite.config.ts ___with following:___
+
 ```js
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
@@ -201,11 +213,13 @@ export default defineConfig({
 ```
 
 \$ vi tsconfig.json compilerOptions ___with following:___
+
 ```json
 "types": ["vitest/globals"]
 ```
 
 \$ vi App.test.tsx ___with following:___
+
 ```js
 import { render, screen } from '@testing-library/react'
 import App from './App'
@@ -222,12 +236,14 @@ it('should have hello world', () => {
 ```
 
 \$ vi test/setup.ts ___with following:___
+
 ```js
 /* eslint-disable import/no-extraneous-dependencies */
 import '@testing-library/jest-dom'
 ```
 
 \$ vi package.json scripts ___with following:___
+
 ```json
 "test": "vitest",
 "test:ui": "vitest --ui",
@@ -235,13 +251,15 @@ import '@testing-library/jest-dom'
 ```
 
 \$ vi .husky/pre-commit ___with following:___
-```
+
+```bash
 pnpm run test:pre-commit
 ```
 
 test run vitest
-```
-$ pnpm run test
+
+```bash
+pnpm run test
 ```
 
 ## Markdown doc extension install and usage
@@ -251,6 +269,7 @@ $ pnpm run test
 install vscode extension "Markdown All In One"
 
 Preview markdown file press
+
 ```js
 [COMMAND][SHIFT]v
 ```
@@ -260,17 +279,21 @@ Preview markdown file press
 [TanStack Router Docs](https://tanstack.com/router/latest/docs/framework/react/overview)
 
 Installation:
-```
-$ pnpm add @tanstack/react-router
+
+```bash
+pnpm add @tanstack/react-router
 ```
 
 [Quick start guide](https://tanstack.com/router/latest/docs/framework/react/quick-start)
 
 Use of file based routing you need to install:
+
+```bash
+pnpm add -D @tanstack/router-vite-plugin 
 ```
-$ pnpm add -D @tanstack/router-vite-plugin 
-```
+
 \$ vi vite.config.ts ___with following:___
+
 ```js
 // vite.config.ts
 import { defineConfig } from 'vite'
@@ -286,7 +309,8 @@ export default defineConfig({
 ```
 
 When using File-Based route configuration:
-```
+
+```text
 change the id of the root <div> on your index.html file to <div id='app'></div>
 ```
 
@@ -294,11 +318,12 @@ change the id of the root <div> on your index.html file to <div id='app'></div>
 
 [File based routing - file naming convention](https://tanstack.com/router/v1/docs/framework/react/guide/file-based-routing#file-naming-conventions)
 
-
 Install devtools:
+
+```bash
+pnpm add @tanstack/router-devtools
 ```
-$ pnpm add @tanstack/router-devtools
-```
+
 [Devtools instruction](https://tanstack.com/router/latest/docs/framework/react/devtools#import-the-devtools)
 
 [Migrate from React Router](https://tanstack.com/router/latest/docs/framework/react/migrate-from-react-router)
@@ -314,6 +339,7 @@ $ pnpm add @tanstack/router-devtools
 \$ pnpm add -D @babel/core @preact/preset-vite @stylistic/eslint-plugin-ts
 
 \$ vi package.json ___with following:___
+
 ```json
   "dependencies": {
    ...
@@ -326,6 +352,7 @@ $ pnpm add @tanstack/router-devtools
 ```
 
 \$ vi vite.config.json ___with following:___
+
 ```js
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
@@ -353,6 +380,7 @@ export default defineConfig({
 ```
 
 \$ vi tsconfig.node.json ___with following:___
+
 ```json
 {
   "compilerOptions": {
@@ -364,6 +392,7 @@ export default defineConfig({
 ```
 
 \$ vi tsconfig.json ___with following:___
+
 ```json
 {
   "compilerOptions": {
@@ -381,13 +410,15 @@ export default defineConfig({
 ```
 
 Bring pnpm lock up in sync ___execute following:___
-```
-$ pnpm install --force
+
+```bash
+pnpm install --force
 ```
 
 ## OPTIONAL: Swap out Preact with React for debugging or compatibility issues
 
 \$ vi package.json ___with following:___
+
 ```json
   "dependencies": {
    ...
@@ -400,6 +431,7 @@ $ pnpm install --force
 ```
 
 \$ vi tsconfig.json ___delete following:___
+
 ```json
 {
   "compilerOptions": {
@@ -417,6 +449,7 @@ $ pnpm install --force
 ```
 
 \$ vi vite.config.json ___with following:___
+
 ```js
 ...
 //import preact from '@preact/preset-vite'
@@ -433,8 +466,9 @@ export default defineConfig({
 ```
 
 Bring pnpm lock up in sync ___execute following:___
-```
-$ pnpm install --force
+
+```bash
+pnpm install --force
 ```
 
 ## Add local server for testing build
@@ -442,6 +476,7 @@ $ pnpm install --force
 \$ pnpm add -D http-server
 
 \$ vi package.json ___with following:___
+
 ```json
 {
    ...
@@ -462,13 +497,15 @@ $ pnpm install --force
 [Tutorial video for Shadcn/ui](https://www.youtube.com/watch?v=7MKEOfSP2s4)
 
 Add Tailwind and its configuration:
-```
-$ pnpm add -D tailwindcss postcss autoprefixer
+
+```bash
+pnpm add -D tailwindcss postcss autoprefixer
  
-$ pnpx tailwindcss init -p
+pnpx tailwindcss init -p
 ```
 
 \$ vi tsconfig.json ___with following:___
+
 ```json
 {
   "compilerOptions": {
@@ -487,6 +524,7 @@ $ pnpx tailwindcss init -p
 \$ pnpm add -D @types/node
 
 \$ vi vite.config.ts ___with following:___
+
 ```js
 ...
 import path from "path"
@@ -506,7 +544,8 @@ export default defineConfig({
 Run the CLI
 
 \$ pnpx shadcn-ui@latest init
-```
+
+```text
 1. Would you like to use TypeScript (recommended)? no / yes
 
 2. Which style would you like to use? › Default
@@ -535,11 +574,13 @@ Example usage:
 [Shadcn Button doc](https://ui.shadcn.com/docs/components/button)
 
 Add a button component to your project:
-```
-$ pnpx shadcn-ui@latest add button
+
+```bash
+pnpx shadcn-ui@latest add button
 ```
 
 Use the button component in code:
+
 ```js
 import { Button } from "@/components/ui/button"
  
@@ -553,6 +594,7 @@ export default function Home() {
 ```
 
 \$ vi .eslintrc ___with following:___
+
 ```json
 "rules": {
    ...
@@ -562,7 +604,8 @@ export default function Home() {
 ```
 
 \$ vi .eslintignore ___with following:___
-```
+
+```text
 ...
 tailwind.config.js
 postcss.config.js
