@@ -417,18 +417,7 @@ pnpm install --force
 
 ## OPTIONAL: Swap out Preact with React for debugging or compatibility issues
 
-\$ vi package.json ___with following:___
-
-```json
-  "dependencies": {
-   ...
-   "react": "^18.2.0",
-   "react-dom": "^18.2.0"
-   //"react": "npm:@preact/compat",
-   //"react-dom": "npm:@preact/compat"
-   ...
-  },
-```
+\$ pnpm add react react-dom
 
 \$ vi tsconfig.json ___delete following:___
 
@@ -464,6 +453,8 @@ export default defineConfig({
    ...
 })
 ```
+
+\$ pnpm remove preact @babel/core @preact/preset-vite @stylistic/eslint-plugin-ts
 
 Bring pnpm lock up in sync ___execute following:___
 
