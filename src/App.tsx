@@ -1,7 +1,13 @@
-const App = () => (
-  <div className="">
-    <p>Hello World</p>
-  </div>
-)
+import './App.css'
+import { Button } from './components/ui/button'
+
+function App() {
+  return (
+    <div>
+      Hello World
+      <Button>Click me</Button>
+    </div>
+  )
+}
 
 export default App

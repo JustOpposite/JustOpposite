@@ -36,6 +36,137 @@ pnpm run dev
 
 \$ git commit -m "initial commit"
 
+## Shadcn UI installation, configuration
+
+[Shadcn/ui Installation](https://ui.shadcn.com/docs/installation)
+
+<mark>NOTE: Shadcn/ui uses Radix ui under the hood, Radix is not compatible with Preact.<mark>
+
+[Shadcn/ui Vite specific installation instructions](https://ui.shadcn.com/docs/installation/vite)
+
+[Tutorial video for Shadcn/ui](https://www.youtube.com/watch?v=7MKEOfSP2s4)
+
+Add Tailwind and its configuration:
+
+```bash
+pnpm add -D tailwindcss postcss autoprefixer
+ 
+pnpx tailwindcss init -p
+```
+
+\$ vi tsconfig.json ___with following:___
+
+```json
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+```
+
+\$ pnpm add -D @types/node
+
+\$ vi vite.config.ts ___with following:___
+
+```js
+...
+import path from "path"
+...
+export default defineConfig({
+   ...
+   resolve: {
+      ...
+      alias: {
+      "@": path.resolve(__dirname, "./src"),
+      },
+      ...
+  },
+})
+```
+
+Run the CLI
+
+\$ pnpx shadcn-ui@latest init
+
+```text
+1. Would you like to use TypeScript (recommended)? no / yes
+
+2. Which style would you like to use? › Default
+
+3. Which color would you like to use as base color? › Slate
+
+4. Where is your global CSS file? › › src/index.css
+
+5. Would you like to use CSS variables for colors? › no / yes
+
+6. Are you using a custom tailwind prefix eg. tw-/ (leave blank if not)
+
+7. Where is your tailwind.config.js located? › tailwind.config.js
+
+8. Configure the import alias for components: › @/components
+
+9. Configure the import alias for utils: › @/lib/utils
+
+10. Are you using React Server Components? › no / yes (no)
+
+11. Write configuration to components.json. proceed/ (yes)
+```
+
+Example usage:
+
+[Shadcn Button doc](https://ui.shadcn.com/docs/components/button)
+
+Add a button component to your project:
+
+```bash
+pnpx shadcn-ui@latest add button
+```
+
+Use the button component in code:
+
+```js
+import { Button } from "@/components/ui/button"
+ 
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+```
+
+\$ vi .eslintrc ___with following:___
+
+```json
+"rules": {
+   ...
+    "import/prefer-default-export": "off",
+   ...
+}
+```
+
+\$ vi .eslintignore ___with following:___
+
+```text
+...
+tailwind.config.js
+postcss.config.js
+```
+
+## Other note worthy UI library
+
+[NextUI component library](https://nextui.org/docs/guide/introduction)
+
+[AceternityUI component library](https://ui.aceternity.com/components)
+
 ## Eslint initialization
 
 \$ pnpm create @eslint/config
@@ -85,6 +216,7 @@ pnpm run dev
    "@typescript-eslint/comma-dangle": "off",
    "@typescript-eslint/semi": "off",
    "react/function-component-definition": "off",
+   "react/jsx-uses-react": "off",
    "react/react-in-jsx-scope": "off",
    "react/jsx-props-no-spreading": "off",
    "import/extensions": [
@@ -95,7 +227,15 @@ pnpm run dev
             "ts": "never",
             "tsx": "never"
       }
-   ]
+   ],
+   "quotes": [
+      "error",
+      "single",
+      {
+         "avoidEscape": true
+      }
+   ],
+   "import/prefer-default-export": "off",
 },
 "ignorePatterns": ["vite.config.ts"]
 ```
@@ -120,6 +260,8 @@ node_modules
 dist
 public
 *.md
+tailwind.config.js
+postcss.config.js
 ```
 
 ## Prettier installation and configuration and eslint integration
@@ -339,6 +481,38 @@ pnpm add @tanstack/router-devtools
 
 [Migrate from React Router](https://tanstack.com/router/latest/docs/framework/react/migrate-from-react-router)
 
+## Add local server for testing build
+
+\$ pnpm add -D http-server
+
+\$ vi package.json ___with following:___
+
+```json
+{
+   ...
+   "scripts": {
+      ...
+      "dist": "pnpm run build && http-server dist",
+      ...
+   },
+}
+```
+
+\$ vi tsconfig.json ___with following:___
+```json
+{
+   "compilerOptions": {
+      ...
+      "strictNullChecks": false,
+      ...
+   },
+   "jsoncompilerOptions": {
+      "strictNullChecks": true
+   },
+   ...
+}
+```
+
 ## OPTIONAL: Preact transplant while keeping React around (Not recommended due to possible future compatibility issues)
 
 [Preact Compat Doc](https://preactjs.com/guide/v10/getting-started/#aliasing-react-to-preact)
@@ -476,151 +650,3 @@ Bring pnpm lock up in sync ___execute following:___
 ```bash
 pnpm install --force
 ```
-
-## Add local server for testing build
-
-\$ pnpm add -D http-server
-
-\$ vi package.json ___with following:___
-
-```json
-{
-   ...
-   "scripts": {
-      ...
-      "dist": "pnpm run build && http-server dist",
-      ...
-   },
-}
-```
-
-## Shadcn UI installation, configuration
-
-[Shadcn/ui Installation](https://ui.shadcn.com/docs/installation)
-
-<mark>NOTE: Shadcn/ui uses Radix ui under the hood, Radix is not compatible with Preact.<mark>
-
-[Shadcn/ui Vite specific installation instructions](https://ui.shadcn.com/docs/installation/vite)
-
-[Tutorial video for Shadcn/ui](https://www.youtube.com/watch?v=7MKEOfSP2s4)
-
-Add Tailwind and its configuration:
-
-```bash
-pnpm add -D tailwindcss postcss autoprefixer
- 
-pnpx tailwindcss init -p
-```
-
-\$ vi tsconfig.json ___with following:___
-
-```json
-{
-  "compilerOptions": {
-    // ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-    // ...
-  }
-}
-```
-
-\$ pnpm add -D @types/node
-
-\$ vi vite.config.ts ___with following:___
-
-```js
-...
-import path from "path"
-...
-export default defineConfig({
-   ...
-   resolve: {
-      ...
-      alias: {
-      "@": path.resolve(__dirname, "./src"),
-      },
-      ...
-  },
-})
-```
-
-Run the CLI
-
-\$ pnpx shadcn-ui@latest init
-
-```text
-1. Would you like to use TypeScript (recommended)? no / yes
-
-2. Which style would you like to use? › Default
-
-3. Which color would you like to use as base color? › Slate
-
-4. Where is your global CSS file? › › src/index.css
-
-5. Would you like to use CSS variables for colors? › no / yes
-
-6. Are you using a custom tailwind prefix eg. tw-/ (leave blank if not)
-
-7. Where is your tailwind.config.js located? › tailwind.config.js
-
-8. Configure the import alias for components: › @/components
-
-9. Configure the import alias for utils: › @/lib/utils
-
-10. Are you using React Server Components? › no / yes (no)
-
-11. Write configuration to components.json. proceed/ (yes)
-```
-
-Example usage:
-
-[Shadcn Button doc](https://ui.shadcn.com/docs/components/button)
-
-Add a button component to your project:
-
-```bash
-pnpx shadcn-ui@latest add button
-```
-
-Use the button component in code:
-
-```js
-import { Button } from "@/components/ui/button"
- 
-export default function Home() {
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  )
-}
-```
-
-\$ vi .eslintrc ___with following:___
-
-```json
-"rules": {
-   ...
-    "import/prefer-default-export": "off",
-   ...
-}
-```
-
-\$ vi .eslintignore ___with following:___
-
-```text
-...
-tailwind.config.js
-postcss.config.js
-```
-
-## Other note worthy UI library
-
-[NextUI component library](https://nextui.org/docs/guide/introduction)
-
-[AceternityUI component library](https://ui.aceternity.com/components)
