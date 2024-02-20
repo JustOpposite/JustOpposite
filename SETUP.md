@@ -504,6 +504,7 @@ pnpm add @tanstack/router-devtools
    "compilerOptions": {
       ...
       "strictNullChecks": false,
+      "moduleResolution": "Bundler",
       ...
    },
    "jsoncompilerOptions": {
