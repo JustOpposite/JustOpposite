@@ -112,7 +112,7 @@ Run the CLI
 
 8. Configure the import alias for components: › @/components
 
-9. Configure the import alias for utils: › @/lib/utils
+9. Configure the import alias for utils: › @/utils/lib
 
 10. Are you using React Server Components? › no / yes (no)
 

@@ -1,13 +1,10 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
 import './App.css'
-import { Button } from './components/ui/button'
+import Home from './views/Home'
 
 function App() {
-  return (
-    <div>
-      Hello World
-      <Button>Click me</Button>
-    </div>
-  )
+  return <Home />
 }
 
 export default App

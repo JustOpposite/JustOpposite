@@ -8,5 +8,5 @@ it('should have Hello World', () => {
   // ACT (for things such as button click or some other user action simulation)
 
   // EXPECT (query and compare expected values)
-  expect(screen.queryByText(/Hello World/)).toBeVisible()
+  expect(screen.queryByText(/Load Countries.../)).toBeVisible()
 })
