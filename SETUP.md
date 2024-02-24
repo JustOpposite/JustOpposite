@@ -461,10 +461,116 @@ export default defineConfig({
 })
 ```
 
-When using File-Based route configuration:
+\$ vi src/routes/__root.tsx ___with following:___
 
-```text
-change the id of the root <div> on your index.html file to <div id='app'></div>
+```js
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+
+export const Route = createRootRoute({
+  component: () => (
+    <>
+      <div className="p-2 flex gap-2">
+        <Link
+          to="/"
+          className="[&.active]:font-bold"
+        >
+          Countries
+        </Link>{' '}
+        <Link
+          to="/about"
+          className="[&.active]:font-bold"
+        >
+          About
+        </Link>
+      </div>
+      <hr />
+      <Outlet />
+
+      {/* This is only used for development debug, remove before release */}
+      <TanStackRouterDevtools />
+    </>
+  )
+})
+```
+
+\$ vi src/routes/index.lazy.tsx ___with following:___
+
+```js
+import { createLazyFileRoute } from '@tanstack/react-router'
+import Home from '@/views/Home'
+
+export const Route = createLazyFileRoute('/')({
+  component: Home
+})
+
+```
+
+\$ vi src/routes/about.lazy.tsx ___with following:___
+
+```js
+import { createLazyFileRoute } from '@tanstack/react-router'
+
+function About() {
+  return <div className="p-2">Hello from About!</div>
+}
+
+export const Route = createLazyFileRoute('/about')({
+  component: About
+})
+```
+
+\$ vi src/app.tsx ___with following:___
+
+```js
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+import './App.css'
+
+// Import the generated route tree
+import { routeTree } from './routeTree.gen'
+
+// Create a new router instance
+const router = createRouter({ routeTree })
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
+}
+
+// Render the app
+const rootElement = document.getElementById('app')!
+if (!rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement)
+  root.render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  )
+}
+```
+
+\$ rm main.ts
+
+Change the id of the root __\<div>__ on your index.html file to __\<div id='app'>\</div>__ change src="/src/__main.tsx__" to src="/src/__App.tsx__"
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation React App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/App.tsx"></script>
+  </body>
+</html>
 ```
 
 [When using Vite is not an option, install router-cli](https://tanstack.com/router/v1/docs/framework/react/guide/file-based-routing#router-cli)
@@ -474,7 +580,7 @@ change the id of the root <div> on your index.html file to <div id='app'></div>
 Install devtools:
 
 ```bash
-pnpm add @tanstack/router-devtools
+pnpm add -D @tanstack/router-devtools
 ```
 
 [Devtools instruction](https://tanstack.com/router/latest/docs/framework/react/devtools#import-the-devtools)

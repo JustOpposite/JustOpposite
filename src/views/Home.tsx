@@ -9,6 +9,9 @@ export default function Home() {
   return (
     <div>
       <p className="mb-5">Load Countries...</p>
+      <p className="mb-5">
+        (Shadcn ui and React ErrorBoundary and Suspense demo)
+      </p>
       <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onReset={() => doSomethingOnReset()}

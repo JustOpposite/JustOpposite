@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import Home from './Home'
 
 it('should have Hello World', () => {
   // ARRANGE (setup and render components)
-  render(<App />)
+  render(<Home />)
 
   // ACT (for things such as button click or some other user action simulation)
 

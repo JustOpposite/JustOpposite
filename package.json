@@ -18,7 +18,6 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-router": "^1.16.6",
-    "@tanstack/router-devtools": "^1.16.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.334.0",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^1.6.2",
+    "@tanstack/router-devtools": "^1.16.6",
     "@tanstack/router-vite-plugin": "^1.16.5",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
