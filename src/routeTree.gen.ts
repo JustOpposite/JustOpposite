@@ -13,11 +13,19 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as StandardImport } from './routes/standard'
+import { Route as BlockedImport } from './routes/blocked'
+import { Route as PostIdImport } from './routes/post/$id'
+import { Route as PostProductIdImport } from './routes/post/product/$id'
+import { Route as PostPartsIdImport } from './routes/post/parts.$id'
 
 // Create Virtual Routes
 
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const NestedIndexLazyImport = createFileRoute('/nested/')()
+const NestedAboutLazyImport = createFileRoute('/nested/about')()
+const NestedIgnoredHellLazyImport = createFileRoute('/nested/ignored/hell')()
 
 // Create/Update Routes
 
@@ -26,10 +34,52 @@ const AboutLazyRoute = AboutLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
+const StandardRoute = StandardImport.update({
+  path: '/standard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlockedRoute = BlockedImport.update({
+  path: '/blocked',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const NestedIndexLazyRoute = NestedIndexLazyImport.update({
+  path: '/nested/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/nested/index.lazy').then((d) => d.Route))
+
+const NestedAboutLazyRoute = NestedAboutLazyImport.update({
+  path: '/nested/about',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/nested/about.lazy').then((d) => d.Route))
+
+const PostIdRoute = PostIdImport.update({
+  path: '/post/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NestedIgnoredHellLazyRoute = NestedIgnoredHellLazyImport.update({
+  path: '/nested/ignored/hell',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/nested/ignored_/hell.lazy').then((d) => d.Route),
+)
+
+const PostProductIdRoute = PostProductIdImport.update({
+  path: '/post/product/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostPartsIdRoute = PostPartsIdImport.update({
+  path: '/post/parts/$id',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -39,8 +89,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/blocked': {
+      preLoaderRoute: typeof BlockedImport
+      parentRoute: typeof rootRoute
+    }
+    '/standard': {
+      preLoaderRoute: typeof StandardImport
+      parentRoute: typeof rootRoute
+    }
     '/about': {
       preLoaderRoute: typeof AboutLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/$id': {
+      preLoaderRoute: typeof PostIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/nested/about': {
+      preLoaderRoute: typeof NestedAboutLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/nested/': {
+      preLoaderRoute: typeof NestedIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/parts/$id': {
+      preLoaderRoute: typeof PostPartsIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/product/$id': {
+      preLoaderRoute: typeof PostProductIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/nested/ignored/hell': {
+      preLoaderRoute: typeof NestedIgnoredHellLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -48,6 +130,17 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexLazyRoute, AboutLazyRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexLazyRoute,
+  BlockedRoute,
+  StandardRoute,
+  AboutLazyRoute,
+  PostIdRoute,
+  NestedAboutLazyRoute,
+  NestedIndexLazyRoute,
+  PostPartsIdRoute,
+  PostProductIdRoute,
+  NestedIgnoredHellLazyRoute,
+])
 
 /* prettier-ignore-end */

@@ -1,5 +1,5 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 
 export const Route = createRootRoute({
   component: () => (
@@ -9,13 +9,52 @@ export const Route = createRootRoute({
           to="/"
           className="[&.active]:font-bold"
         >
-          Countries
+          [Countries]
         </Link>{' '}
         <Link
           to="/about"
           className="[&.active]:font-bold"
         >
-          About
+          [LazyAbout]
+        </Link>
+        <Link
+          to="/standard"
+          className="[&.active]:font-bold"
+        >
+          [StaticStandard]
+        </Link>
+        <Link
+          to="/blocked"
+          className="[&.active]:font-bold"
+        >
+          [StaticBlocked]
+        </Link>
+        <Link
+          to="/nested"
+          className="[&.active]:font-bold"
+          activeOptions={{ exact: true }}
+        >
+          [NestedIndexLazy]
+        </Link>
+        <Link
+          to="/nested/about"
+          className="[&.active]:font-bold"
+          activeProps={{
+            style: {
+              color: 'red'
+            }
+          }}
+        >
+          [NestedLazyAbout]
+        </Link>
+        <Link
+          to="/post/$id"
+          params={{
+            id: '54188'
+          }}
+          className="[&.active]:font-bold"
+        >
+          [post/54188]
         </Link>
       </div>
       <hr />
