@@ -580,7 +580,7 @@ Change the id of the root __\<div>__ on your index.html file to __\<div id='app'
 Install devtools:
 
 ```bash
-pnpm add -D @tanstack/router-devtools
+pnpm add -D @tanstack/router-devtools @tanstack/router-vite-plugin csstype
 ```
 
 [Devtools instruction](https://tanstack.com/router/latest/docs/framework/react/devtools#import-the-devtools)
