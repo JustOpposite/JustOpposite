@@ -587,6 +587,40 @@ pnpm add -D @tanstack/router-devtools @tanstack/router-vite-plugin csstype
 
 [Migrate from React Router](https://tanstack.com/router/latest/docs/framework/react/migrate-from-react-router)
 
+## TanStack Query install
+
+[TanStack Query Docs](https://tanstack.com/query/latest/docs/framework/react/overview)
+
+Installation:
+
+```bash
+pnpm add @tanstack/react-query
+pnpm add -D @tanstack/eslint-plugin-query
+```
+
+Install devtool:
+
+```bash
+pnpm add -D @tanstack/react-query-devtools
+```
+
+\$ vi app.tsx ___with following:___
+
+```js
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+  ...
+  // Create a query client
+  const queryClient = new QueryClient()
+  ...
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+  ...
+```
+
 ## Add local server for testing build
 
 \$ pnpm add -D http-server
