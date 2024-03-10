@@ -659,6 +659,14 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 }
 ```
 
+## Recharts
+
+[Recharts](https://recharts.org/en-US/guide)
+
+Installation:
+
+\$ pnpm add recharts
+
 ## OPTIONAL: Preact transplant while keeping React around (Not recommended due to possible future compatibility issues)
 
 [Preact Compat Doc](https://preactjs.com/guide/v10/getting-started/#aliasing-react-to-preact)
