@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
@@ -6,8 +7,10 @@ import {
   createHashHistory,
   createRouter
 } from '@tanstack/react-router'
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 import './App.css'
 
 // Import the generated route tree
@@ -50,6 +53,7 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </StrictMode>
   )

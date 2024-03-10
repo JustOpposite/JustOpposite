@@ -6,14 +6,6 @@ export default function Countries() {
   const { data } = summon('https://restcountries.com/v3.1/name/china')
 
   console.count('re-renders')
-  console.dir(data)
-
-  const r = Math.floor(Math.random() * 2)
-  if (r) {
-    throw new Error(
-      '(simulated) Error occurred which is captured by the ErrorBoundary'
-    )
-  }
 
   return (
     <div>

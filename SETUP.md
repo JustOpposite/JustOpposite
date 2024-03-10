@@ -611,12 +611,14 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
   ...
   // Create a query client
   const queryClient = new QueryClient()
   ...
   <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
+    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
   ...
 ```
@@ -639,6 +641,7 @@ import {
 ```
 
 \$ vi tsconfig.json ___with following:___
+
 ```json
 {
    "compilerOptions": {

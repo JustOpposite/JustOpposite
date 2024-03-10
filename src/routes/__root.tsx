@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 
@@ -10,7 +11,13 @@ export const Route = createRootRoute({
           className="[&.active]:font-bold"
         >
           [Countries]
-        </Link>{' '}
+        </Link>
+        <Link
+          to="/homewq"
+          className="[&.active]:font-bold"
+        >
+          [CountriesWithQuery]
+        </Link>
         <Link
           to="/about"
           className="[&.active]:font-bold"
