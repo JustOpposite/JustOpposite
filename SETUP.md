@@ -591,6 +591,8 @@ pnpm add -D @tanstack/router-devtools @tanstack/router-vite-plugin csstype
 
 [TanStack Query Docs](https://tanstack.com/query/latest/docs/framework/react/overview)
 
+[Tanstack Query Tutorial](https://www.youtube.com/watch?v=NOvx4LB6Hfk)
+
 Installation:
 
 ```bash
