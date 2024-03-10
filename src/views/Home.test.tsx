@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import Home from './Home'
+import HomeWithSuspense from './HomeWithSuspense'
 
 it('should have Hello World', () => {
   // ARRANGE (setup and render components)
-  render(<Home />)
+  render(<HomeWithSuspense />)
 
   // ACT (for things such as button click or some other user action simulation)
 

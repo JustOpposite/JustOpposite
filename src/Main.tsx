@@ -2,6 +2,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
+  ErrorComponent,
   Link,
   RouterProvider,
   createHashHistory,
@@ -11,10 +12,14 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import './App.css'
+import './Main.css'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
+import { Spinner } from './components/shared/Spinner'
+
+// Create a query client
+const queryClient = new QueryClient()
 
 const hashHistory = createHashHistory()
 
@@ -22,9 +27,27 @@ const hashHistory = createHashHistory()
 const router = createRouter({
   routeTree,
   history: hashHistory,
+
   // preload lazy routes if user hover over a lazy link more than .5 second
   defaultPreload: 'intent',
   defaultPreloadDelay: 500,
+
+  // Since we're using React Query, we don't want loader calls to ever be stale
+  // This will ensure that the loader is always called when the route is preloaded or visited
+  defaultPreloadStaleTime: 0,
+
+  context: {
+    queryClient
+  },
+
+  defaultPendingComponent: () => (
+    <div className="p-2 text-2xl">
+      <Spinner />
+    </div>
+  ),
+
+  defaultErrorComponent: ({ error }) => <ErrorComponent error={error} />,
+
   defaultNotFoundComponent: () => {
     return (
       <div>
@@ -41,9 +64,6 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
-
-// Create a query client
-const queryClient = new QueryClient()
 
 // Render the app
 const rootElement = document.getElementById('app')!

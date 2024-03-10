@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as StandardImport } from './routes/standard'
+import { Route as HomewqsImport } from './routes/homewqs'
 import { Route as HomewqImport } from './routes/homewq'
 import { Route as BlockedImport } from './routes/blocked'
 import { Route as PostIdImport } from './routes/post/$id'
@@ -22,6 +23,7 @@ import { Route as PostPartsIdImport } from './routes/post/parts.$id'
 
 // Create Virtual Routes
 
+const GoogleLazyImport = createFileRoute('/google')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 const NestedIndexLazyImport = createFileRoute('/nested/')()
@@ -30,6 +32,11 @@ const NestedIgnoredHellLazyImport = createFileRoute('/nested/ignored/hell')()
 
 // Create/Update Routes
 
+const GoogleLazyRoute = GoogleLazyImport.update({
+  path: '/google',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/google.lazy').then((d) => d.Route))
+
 const AboutLazyRoute = AboutLazyImport.update({
   path: '/about',
   getParentRoute: () => rootRoute,
@@ -37,6 +44,11 @@ const AboutLazyRoute = AboutLazyImport.update({
 
 const StandardRoute = StandardImport.update({
   path: '/standard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HomewqsRoute = HomewqsImport.update({
+  path: '/homewqs',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -103,12 +115,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomewqImport
       parentRoute: typeof rootRoute
     }
+    '/homewqs': {
+      preLoaderRoute: typeof HomewqsImport
+      parentRoute: typeof rootRoute
+    }
     '/standard': {
       preLoaderRoute: typeof StandardImport
       parentRoute: typeof rootRoute
     }
     '/about': {
       preLoaderRoute: typeof AboutLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/google': {
+      preLoaderRoute: typeof GoogleLazyImport
       parentRoute: typeof rootRoute
     }
     '/post/$id': {
@@ -144,8 +164,10 @@ export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   BlockedRoute,
   HomewqRoute,
+  HomewqsRoute,
   StandardRoute,
   AboutLazyRoute,
+  GoogleLazyRoute,
   PostIdRoute,
   NestedAboutLazyRoute,
   NestedIndexLazyRoute,
