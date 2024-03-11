@@ -34,7 +34,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
           </li>
           <li>
             <Link
-              to="/homewq"
+              to="/homeqo"
               className="[&.active]:font-bold"
             >
               [Load Countries using Query and leverage router pending and error

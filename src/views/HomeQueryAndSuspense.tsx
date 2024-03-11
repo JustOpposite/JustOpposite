@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import { ErrorBoundary } from 'react-error-boundary'
-import { Suspense } from 'react'
-import SkeletonDemo from '@/components/shared/SkeletonDemo'
+// import { Suspense } from 'react'
+// import SkeletonDemo from '@/components/shared/SkeletonDemo'
 import CountriesWithQuery from '@/components/shared/CountriesWithQuery'
 import { Button } from '@/components/ui/button'
 
@@ -23,17 +23,17 @@ export default function HomeQueryAndSuspense() {
             )}
             onReset={reset}
           >
-            <Suspense fallback={<SkeletonDemo />}>
-              <p className="mb-5">
-                (Shadcn ui and React ErrorBoundary and Suspense demo)
-              </p>
-              <CountriesWithQuery />
-              <p className="mt-5">
-                When component rendered without failure, to retry, click on
-                browser refresh. Child component simulates failure rate of 50%
-                of the randomized time.
-              </p>
-            </Suspense>
+            {/* <Suspense fallback={<SkeletonDemo />}> */}
+            <p className="mb-5">
+              (Shadcn ui and React ErrorBoundary and Suspense demo)
+            </p>
+            <CountriesWithQuery />
+            <p className="mt-5">
+              When component rendered without failure, to retry, click on
+              browser refresh. Child component simulates failure rate of 50% of
+              the randomized time.
+            </p>
+            {/* </Suspense> */}
           </ErrorBoundary>
         )}
       </QueryErrorResetBoundary>
