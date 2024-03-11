@@ -23,6 +23,7 @@ import { Route as PostPartsIdImport } from './routes/post/parts.$id'
 
 // Create Virtual Routes
 
+const RechartLazyImport = createFileRoute('/rechart')()
 const GoogleLazyImport = createFileRoute('/google')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
@@ -31,6 +32,11 @@ const NestedAboutLazyImport = createFileRoute('/nested/about')()
 const NestedIgnoredHellLazyImport = createFileRoute('/nested/ignored/hell')()
 
 // Create/Update Routes
+
+const RechartLazyRoute = RechartLazyImport.update({
+  path: '/rechart',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/rechart.lazy').then((d) => d.Route))
 
 const GoogleLazyRoute = GoogleLazyImport.update({
   path: '/google',
@@ -131,6 +137,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoogleLazyImport
       parentRoute: typeof rootRoute
     }
+    '/rechart': {
+      preLoaderRoute: typeof RechartLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/post/$id': {
       preLoaderRoute: typeof PostIdImport
       parentRoute: typeof rootRoute
@@ -168,6 +178,7 @@ export const routeTree = rootRoute.addChildren([
   StandardRoute,
   AboutLazyRoute,
   GoogleLazyRoute,
+  RechartLazyRoute,
   PostIdRoute,
   NestedAboutLazyRoute,
   NestedIndexLazyRoute,

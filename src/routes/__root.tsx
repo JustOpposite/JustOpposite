@@ -106,6 +106,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
               [Post a specific id 54188]
             </Link>
           </li>
+          <li>
+            <Link
+              to="/rechart"
+              className="[&.active]:font-bold"
+            >
+              [Rechart Area]
+            </Link>
+          </li>
         </ul>
       </div>
       <hr />
