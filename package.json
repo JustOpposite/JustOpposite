@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-form": "^0.13.7",
     "@tanstack/react-query": "^5.25.0",
     "@tanstack/react-router": "^1.19.4",
+    "@tanstack/valibot-form-adapter": "^0.13.7",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -29,7 +31,8 @@
     "recharts": "^2.12.2",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "valibot": "^0.30.0"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^1.6.2",

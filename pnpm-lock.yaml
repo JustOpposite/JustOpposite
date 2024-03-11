@@ -8,12 +8,18 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.57)(react@18.2.0)
+  '@tanstack/react-form':
+    specifier: ^0.13.7
+    version: 0.13.7(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
     specifier: ^5.25.0
     version: 5.25.0(react@18.2.0)
   '@tanstack/react-router':
     specifier: ^1.19.4
     version: 1.19.4(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/valibot-form-adapter':
+    specifier: ^0.13.7
+    version: 0.13.7(valibot@0.30.0)
   axios:
     specifier: ^1.6.7
     version: 1.6.7
@@ -47,6 +53,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
+  valibot:
+    specifier: ^0.30.0
+    version: 0.30.0
 
 devDependencies:
   '@stylistic/eslint-plugin-ts':
@@ -848,6 +857,12 @@ packages:
       - typescript
     dev: true
 
+  /@tanstack/form-core@0.13.7:
+    resolution: {integrity: sha512-rz5/CVmZ/QUQoFmmMGi6A6gkBYWRmENRwo+6Hxh0EWZNHR9OFNtEiHLILnT/iKKzSfjFkQOPJmVnPZzJ2kiT6Q==}
+    dependencies:
+      '@tanstack/store': 0.3.1
+    dev: false
+
   /@tanstack/history@1.15.13:
     resolution: {integrity: sha512-ToaeMtK5S4YaxCywAlYexc7KPFN0esjyTZ4vXzJhXEWAkro9iHgh7m/4ozPJb7oTo65WkHWX0W9GjcZbInSD8w==}
     engines: {node: '>=12'}
@@ -858,6 +873,21 @@ packages:
   /@tanstack/query-devtools@5.24.0:
     resolution: {integrity: sha512-pThim455t69zrZaQKa7IRkEIK8UBTS+gHVAdNfhO72Xh4rWpMc63ovRje5/n6iw63+d6QiJzVadsJVdPoodSeQ==}
     dev: true
+
+  /@tanstack/react-form@0.13.7(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-dLN/Ok+LXtfHpkJPo218iOr2347fPpjiz1OmSud7OYf68C5SxChoOabI/UX3und9Un4MjMxMxKjICHTigNRkiw==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tanstack/form-core': 0.13.7
+      '@tanstack/react-store': 0.3.1(react-dom@18.2.0)(react@18.2.0)
+      decode-formdata: 0.4.0
+      react: 18.2.0
+      rehackt: 0.0.3(@types/react@18.2.57)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+    dev: false
 
   /@tanstack/react-query-devtools@5.25.0(@tanstack/react-query@5.25.0)(react@18.2.0):
     resolution: {integrity: sha512-bqtr1Bwvo/jspJXb2l4R1DSZ848TvIzGBk4V0b6YGS5EQ3015dhm3mPqyTgh0DquK5ZR0h1yP/4DpzhhvTnFHA==}
@@ -903,6 +933,18 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
 
+  /@tanstack/react-store@0.3.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PfV271d345It6FdcX4c9gd+llKGddtvau8iJnybTAWmYVyDeFWfIIkiAJ5iNITJmI02AzqgtcV3QLNBBlpBUjA==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tanstack/store': 0.3.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
   /@tanstack/router-devtools@1.19.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-f838U2Ku8DhKSTG9Qei45IkoJn7LB1r6lDlyKLjvskvEw89tueFpW4iaoBX5RJsnPpEwPEXWFFxEEde8MaTUow==}
     engines: {node: '>=12'}
@@ -937,6 +979,19 @@ packages:
 
   /@tanstack/store@0.1.3:
     resolution: {integrity: sha512-GnolmC8Fr4mvsHE1fGQmR3Nm0eBO3KnZjDU0a+P3TeQNM/dDscFGxtA7p31NplQNW3KwBw4t1RVFmz0VeKLxcw==}
+
+  /@tanstack/store@0.3.1:
+    resolution: {integrity: sha512-A49KN8SpLMWaNmZGPa9K982RQ81W+m7W6iStcQVeKeVS70JZRqkF0fDwKByREPq6qz9/kS0aQFOPQ0W6wIeU5g==}
+    dev: false
+
+  /@tanstack/valibot-form-adapter@0.13.7(valibot@0.30.0):
+    resolution: {integrity: sha512-JqM9gLO3uCgjUWqsXa8ERNhMxQarjc++KHgQQMTL/NnUfEC8VA+/0H7wlyOBvhlXROD+MijX/3YTJGmrmzWzeA==}
+    peerDependencies:
+      valibot: ^0.x
+    dependencies:
+      '@tanstack/form-core': 0.13.7
+      valibot: 0.30.0
+    dev: false
 
   /@testing-library/dom@9.3.4:
     resolution: {integrity: sha512-FlS4ZWlp97iiNWig0Muq8p+3rVDjRiYE+YKGbAqXOu9nwJFFOdL00kFpz42M+4huzYi86vAK1sOOfyOG45muIQ==}
@@ -1895,6 +1950,10 @@ packages:
   /decimal.js@10.4.3:
     resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==}
     dev: true
+
+  /decode-formdata@0.4.0:
+    resolution: {integrity: sha512-/OMUlsRLrSgHPOWCwembsFFTT4DY7Ts9GGlwK8v9yeLOyYZSPKIfn/1oOuV9UmpQ9CZi5JeyT8edunRoBOOl5g==}
+    dev: false
 
   /deep-eql@4.1.3:
     resolution: {integrity: sha512-WaEtAOpRA1MQ0eohqZjpGD8zdI0Ovsm8mmFhaDN8dvDZzyoUMcYDnf5Y6iu7HTXxf8JDS23qWa4a+hKCDyOPzw==}
@@ -4059,6 +4118,21 @@ packages:
       set-function-name: 2.0.1
     dev: true
 
+  /rehackt@0.0.3(@types/react@18.2.57)(react@18.2.0):
+    resolution: {integrity: sha512-aBRHudKhOWwsTvCbSoinzq+Lej/7R8e8UoPvLZo5HirZIIBLGAgdG7SL9QpdcBoQ7+3QYPi3lRLknAzXBlhZ7g==}
+    peerDependencies:
+      '@types/react': '*'
+      react: '*'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.57
+      react: 18.2.0
+    dev: false
+
   /requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: true
@@ -4678,6 +4752,10 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /valibot@0.30.0:
+    resolution: {integrity: sha512-5POBdbSkM+3nvJ6ZlyQHsggisfRtyT4tVTo1EIIShs6qCdXJnyWU5TJ68vr8iTg5zpOLjXLRiBqNx+9zwZz/rA==}
+    dev: false
 
   /victory-vendor@36.9.1:
     resolution: {integrity: sha512-+pZIP+U3pEJdDCeFmsXwHzV7vNHQC/eIbHklfe2ZCZqayYRH7lQbHcVgsJ0XOOv27hWs4jH4MONgXxHMObTMSA==}

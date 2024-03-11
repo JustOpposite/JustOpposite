@@ -667,6 +667,20 @@ Installation:
 
 \$ pnpm add recharts
 
+## Tanstack Forms
+
+[Tanstack Forms](https://tanstack.com/form/latest/docs/overview)
+
+Installation with Valibot support:
+
+\$ pnpm add @tanstack/react-form @tanstack/valibot-form-adapter
+
+## Valibot (runtime type checker)
+
+[Valibot](https://valibot.dev/guides/introduction/)
+
+\$ pnpm add valibot
+
 ## OPTIONAL: Preact transplant while keeping React around (Not recommended due to possible future compatibility issues)
 
 [Preact Compat Doc](https://preactjs.com/guide/v10/getting-started/#aliasing-react-to-preact)
