@@ -18,6 +18,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         <ul>
           <li>
             <Link
+              to="/example"
+              className="[&.active]:font-bold"
+            >
+              [Primary Example]
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/"
               className="[&.active]:font-bold"
             >

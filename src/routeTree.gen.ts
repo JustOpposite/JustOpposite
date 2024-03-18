@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as StandardImport } from './routes/standard'
 import { Route as HomewqsImport } from './routes/homewqs'
 import { Route as HomeqoImport } from './routes/homeqo'
+import { Route as ExampleImport } from './routes/example'
 import { Route as BlockedImport } from './routes/blocked'
 import { Route as PostIdImport } from './routes/post/$id'
 import { Route as PostProductIdImport } from './routes/post/product/$id'
@@ -60,6 +61,11 @@ const HomewqsRoute = HomewqsImport.update({
 
 const HomeqoRoute = HomeqoImport.update({
   path: '/homeqo',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ExampleRoute = ExampleImport.update({
+  path: '/example',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -115,6 +121,10 @@ declare module '@tanstack/react-router' {
     }
     '/blocked': {
       preLoaderRoute: typeof BlockedImport
+      parentRoute: typeof rootRoute
+    }
+    '/example': {
+      preLoaderRoute: typeof ExampleImport
       parentRoute: typeof rootRoute
     }
     '/homeqo': {
@@ -173,6 +183,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   BlockedRoute,
+  ExampleRoute,
   HomeqoRoute,
   HomewqsRoute,
   StandardRoute,

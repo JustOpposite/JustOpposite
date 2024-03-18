@@ -9,6 +9,11 @@ export default function HomeWithSuspense() {
   return (
     <div>
       <p className="mb-5">Load Countries with suspense...</p>
+      {/* <BoundaryContainer
+        errorFallbackRender={errorFallback}
+        suspenseFallbackRender={<SkeletonDemoAlt />}
+      >
+      </BoundaryContainer> */}
       <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onReset={() => doSomethingOnReset()}

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { createFileRoute, useBlocker } from '@tanstack/react-router'
 import { useState } from 'react'
 

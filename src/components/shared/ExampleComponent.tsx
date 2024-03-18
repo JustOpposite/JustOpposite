@@ -5,12 +5,11 @@ import { useSuspenseQueries } from '@tanstack/react-query'
 import { Button } from '../ui/button'
 import {
   exampleQueryOption1WithRealFetch,
-  fetchWithError,
   exampleQueryOption2SimulatedFetch,
   exampleQueryOption3SimulatedFetch
 } from '@/utils/exampleQueryOptions'
 
-export default function CountriesWithQuery() {
+export default function ExampleComponent() {
   const { data } = useSuspenseQueries({
     queries: [
       exampleQueryOption1WithRealFetch(),
@@ -25,17 +24,7 @@ export default function CountriesWithQuery() {
     }
   })
 
-  const foo = fetchWithError()
-
   console.count('re-renders')
-  console.error(JSON.stringify(foo))
-  //  const r = Math.floor(Math.random() * 2)
-  // const r = 1
-  // if (r) {
-  //   throw new Error(
-  //     '(simulated) Error occurred which is captured by the ErrorBoundary'
-  //   )
-  // }
 
   return (
     <div>

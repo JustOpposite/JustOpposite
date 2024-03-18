@@ -6,9 +6,10 @@ export default function ErrorFallback({
   resetErrorBoundary
 }: FallbackProps) {
   return (
-    <div role="alert">
-      <pre className="mb-5">{error.message}</pre>
-      <Button onClick={resetErrorBoundary}>Try again</Button>
+    <div>
+      There was an error!{' '}
+      <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+      <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
     </div>
   )
 }
